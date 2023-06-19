@@ -19,18 +19,8 @@ from PIL import Image
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
  
-matPath = "../data/artificially_augmented_DS_2.mat"
+matPath = "../data/artificially_augmented_DS_90.mat"
 data = scipy.io.loadmat(matPath) 
-
-# def showMatFile(matPath):
-    # Load the mat file
-    # data = scipy.io.loadmat(matPath)    
-    # Show images
-    # for i in range(0, 10):
-        # img = data['DATA'][0][0][0][i]
-        # plt.imshow(img)
-        # plt.show()
-#showMatFile(matPath)
  
 class MyDataset(torch.utils.data.Dataset):
     
@@ -39,8 +29,8 @@ class MyDataset(torch.utils.data.Dataset):
         self.fold = fold
         self.train = train
         self.transform = transform
-        self.train_indices = self.mat_data['index'][0][:308] - 1
-        self.test_indices = self.mat_data['index'][0][308:383] - 1
+        self.train_indices = self.mat_data['index'][0][:389] - 1
+        self.test_indices = self.mat_data['index'][0][389:464] - 1
         self.y_train = self.mat_data['labels'][0][self.train_indices]
         self.y_test = self.mat_data['labels'][0][self.test_indices]
         self.num_classes = len(np.unique(self.y_train))
@@ -70,8 +60,8 @@ class MyDataset(torch.utils.data.Dataset):
 # load dataset
 data = scipy.io.loadmat(matPath)
 DIV = data['index'][0]   # Division between training and test set
-DIM1 = 308  # Number of training patterns
-DIM2 = 383 # Number of patterns
+DIM1 = 389  # Number of training patterns
+DIM2 = 464 # Number of patterns
 NF = 5 
 
 # # Neural network parameters
@@ -246,4 +236,4 @@ def train_and_validate(model, loss_criterion, optimizer, epochs=25):
 num_epochs = 5
 trained_model, history = train_and_validate(alexnet, loss_func, optimizer, num_epochs)
 
-torch.save(history, 'ArtificialDS_train_History.pt') 
+torch.save(history, 'ArtificialDS_train_History_90_Images.pt') 

@@ -21,16 +21,6 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
  
 matPath = "../data/DatasColor_29.mat"
 data = scipy.io.loadmat(matPath) 
-
-# def showMatFile(matPath):
-    # Load the mat file
-    # data = scipy.io.loadmat(matPath)    
-    # Show images
-    # for i in range(0, 10):
-        # img = data['DATA'][0][0][0][i]
-        # plt.imshow(img)
-        # plt.show()
-#showMatFile(matPath)
  
 class MyDataset(torch.utils.data.Dataset):
     
@@ -64,8 +54,6 @@ class MyDataset(torch.utils.data.Dataset):
             img = self.transform(img)
         
         return img, label
-
-
 
 # load dataset
 data = scipy.io.loadmat(matPath)
@@ -189,8 +177,6 @@ def train_and_validate(model, loss_criterion, optimizer, epochs=25):
             
             # Compute total accuracy in the whole batch and add to train_acc
             train_acc += acc.item() * inputs.size(0)
-            
-            #print("Batch number: {:03d}, Training: Loss: {:.4f}, Accuracy: {:.4f}".format(i, loss.item(), acc.item()))
 
             
         # Validation - No gradient tracking needed
@@ -222,8 +208,6 @@ def train_and_validate(model, loss_criterion, optimizer, epochs=25):
 
                 # Compute total accuracy in the whole batch and add to valid_acc
                 valid_acc += acc.item() * inputs.size(0)
-
-                #print("Validation Batch number: {:03d}, Validation: Loss: {:.4f}, Accuracy: {:.4f}".format(j, loss.item(), acc.item()))
             
         # Find average training loss and training accuracy
         avg_train_loss = train_loss/train_data_size 
