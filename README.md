@@ -1,4 +1,3 @@
-"# DeepLearning_DA_FT_DiffusionModel" 
 ## Prerequisites
 
 Before running the project, ensure that you have the following dependencies installed:
