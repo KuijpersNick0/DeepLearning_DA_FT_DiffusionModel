@@ -23,14 +23,36 @@ To create a new fine-tuned model and save its weights for future use, follow the
 2. Run the notebook to perform the fine-tuning process.
 3. Save the generated model weights for later use.
 
+## Discrete cosine transformation (DCT)
+
+The Discrete Cosine Transformation is a mathematical transformation that converts a signal or an image from the spatial domain to the frequency domain. Traditionally used in image compression, DCT has found application in data augmentation due to its ability to preserve essential information while modifying the input data. By applying DCT, the original data is transformed into a series of cosine functions with different frequencies. These transformed features can then be altered to generate augmented data points.\
+
+## DCT 1 and DCT 2
+
+Inside the `DCT_1_&DCT_2.ipynb` you will find 2 different DCT metods
+
+1. DCT 1 (method1_DCT): In this method the DCT is used to create new images, but in this case the pixels setted to zero are determined by the following formula: pixelvalue > (mode + std*2) or < (mode - std*2). Std is the standard deviation
+2. DCT 2 (method2_DCT): some of the features at a random value extracted from a Gaussian distribution are reset. After that, the inverse of the transform is performed
+
+
 ## Generating Artificial Images
 
+### Diffusuion model 
 To generate artificial images using the fine-tuned diffusion model and save them to a `.mat` file, perform the following:
 
 1. Open `generateArtificialImages.ipynb` in Jupyter Notebook.
 2. Modify the path of the model weights to match the path of the previously generated model weights.
 3. Run the notebook to generate the artificial images.
 4. Save the generated images to a `.mat` file.
+
+### Discrete cosine transformation (DCT)
+To generate new synthetic images using DCT and create new dataset (`.mat` files) that contain some of the new generated images: 
+
+1. Open`DCT_1_&DCT_2.ipynb`for the methods
+2. Modify the paths and run the notebook to generate 2 new `.mat` files with only synthetic images, for DCT 1 and DCT 2.
+3. Modify the paths and run the notebook `creation_augmented_dataset_DCT_1_DCT_2.ipynb` to create the augmented dataset.
+4. Run notebooks `Main_CNN_DCT_method_1.ipynb` and `Main_CNN_DCT_method_2.ipynb` to run the CNN to the new generated datasets.
+5. .pt files will be automatically saved. 
 
 ## Running the Simple CNN
 
