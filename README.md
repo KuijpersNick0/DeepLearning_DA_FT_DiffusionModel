@@ -31,7 +31,7 @@ The Discrete Cosine Transformation is a mathematical transformation that convert
 
 Inside the `DCT_1_&DCT_2.ipynb` you will find 2 different DCT metods
 
-1. DCT 1 (method1_DCT): In this method the DCT is used to create new images, but in this case the pixels setted to zero are determined by the following formula: pixelvalue > (mode + std*2) or < (mode - std*2). Std is the standard deviation
+1. DCT 1 (method1_DCT): In this method the DCT is used to create new images, but in this case the pixels setted to zero are determined by the following formula: pixelvalue > (mode + std x 2) or < (mode - std x 2). Std is the standard deviation
 2. DCT 2 (method2_DCT): some of the features at a random value extracted from a Gaussian distribution are reset. After that, the inverse of the transform is performed
 
 
